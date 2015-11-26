@@ -3,11 +3,22 @@
 </head>
 
 <body>
-  <ul>
-    {{#each resolutions}}
-      {{> resolution}}
-    {{/each}}  
-  </ul>
+  
+  <div class="container">
+    <header>
+      <h1>Monthly Resolutions</h1>
+
+      <form class="new-resolution">
+        <input type="text" name="title" placeholder="New Resolution">
+        <input type="submit" value="submit">
+      </form>
+    </header>
+    <ul>
+      {{#each resolutions}}
+        {{> resolution}}
+      {{/each}}  
+    </ul>
+  </div>
 </body>
 
 <template name="resolution">

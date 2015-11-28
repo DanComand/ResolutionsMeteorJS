@@ -19,3 +19,4 @@ ecmascript              # Enable ECMAScript2015+ syntax in app code
 cryptoquick:stylus-multi
 accounts-password
 accounts-ui
+mswartz:embedly

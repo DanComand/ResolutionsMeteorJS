@@ -21,8 +21,10 @@ if (Meteor.isClient) {
     'submit .new-resolution': function(event) {
       var title = event.target.title.value;
       var url = event.target.url.value;
+      var escapeUrl = Embedly.extract(url);
+      // var embedUrl = Embedly.extract(escapeUrl);
 
-      Meteor.call("addResolution", title, url);
+      Meteor.call("addResolution", title, url, escapeUrl);
 
       event.target.title.value = "";
       event.target.url.value = "";
@@ -57,10 +59,11 @@ if (Meteor.isServer) {
 
 
 Meteor.methods({
-  addResolution: function(title, url) {
+  addResolution: function(title, url, escapeUrl) {
     Resolutions.insert({
     title : title,
     url : url,
+    escapeUrl : escapeUrl,
     createdAt : new Date(),
     owner: Meteor.userId()
     });

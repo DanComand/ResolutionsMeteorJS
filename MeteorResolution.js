@@ -1,6 +1,8 @@
 Resolutions = new Mongo.Collection('resolutions');
 
 if (Meteor.isClient) {
+  Meteor.subscribe('resolutions');
+
   Template.body.helpers({
     resolutions: function() {
       if (Session.get('hideFinished')) {
@@ -49,6 +51,10 @@ if (Meteor.isClient) {
 if (Meteor.isServer) {
   Meteor.startup(function () {
     // code to run on server at startup
+  });
+
+  Meteor.publish("resolutions", function() {
+    return Resolutions.find();
   });
 }
 

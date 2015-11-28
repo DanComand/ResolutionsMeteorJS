@@ -20,10 +20,12 @@ if (Meteor.isClient) {
   Template.body.events({
     'submit .new-resolution': function(event) {
       var title = event.target.title.value;
+      var url = event.target.url.value;
 
-      Meteor.call("addResolution", title);
+      Meteor.call("addResolution", title, url);
 
       event.target.title.value = "";
+      event.target.url.value = "";
 
       return false;
     },
@@ -55,9 +57,10 @@ if (Meteor.isServer) {
 
 
 Meteor.methods({
-  addResolution: function(title) {
+  addResolution: function(title, url) {
     Resolutions.insert({
     title : title,
+    url : url,
     createdAt : new Date(),
     owner: Meteor.userId()
     });

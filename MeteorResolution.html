@@ -14,6 +14,7 @@
         <input type="checkbox" checked="{{hideFinished}}">
         Hide Finished Resolutions
       </label>  
+      <div class="login-buttons">{{> loginButtons}}</div>
       {{#if currentUser}}
         <form class="new-resolution">
           <!-- <input type="text" name="title" placeholder="Bookmark Title"> -->
@@ -22,11 +23,12 @@
         </form>
       {{/if}}
     </header>
-    <ul>
-      {{#each resolutions}}
-        {{> resolution}}
-      {{/each}}  
-    </ul>
-    {{> loginButtons}}
+    <div class="bookmark-container">
+      <ul>
+        {{#each resolutions}}
+          {{> resolution}}
+        {{/each}}  
+      </ul>
+    </div>
   </div>
 </body>

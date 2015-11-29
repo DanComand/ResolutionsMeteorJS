@@ -15,12 +15,14 @@
       <!-- <span class="text">{{escapeUrl.title}}</span><br> -->
       <!-- <span class="text"><a href="{{url}}" target="_blank">{{url}}</a></span> -->
       <span class="text">{{escapeUrl.title}}</span><br>
-      <span class="text"><img src="{{escapeUrl.images.[0].url}}"/></span><br>
+      <span class="text"><img src="{{escapeUrl.images.[0].url}}" class="bookmark-image"/></span><br>
       <span class="text">{{escapeUrl.description}}</span>
       </a>
     </div>   
-      {{#if isOwner}}
-        <button class="delete">Remove</button>
-      {{/if}}
+      <div class="remove-button">
+        {{#if isOwner}}
+          <br><button class="delete">Remove</button>
+        {{/if}}
+      </div>
   </li>
 </template>

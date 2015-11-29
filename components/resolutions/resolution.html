@@ -10,12 +10,14 @@
           {{/if}}
         </button>
           {{/if}}
-    <div class="bookmark">        
+    <div class="bookmark">
+    <a href="{{escapeUrl.url}}" target="_blank">        
       <!-- <span class="text">{{escapeUrl.title}}</span><br> -->
       <!-- <span class="text"><a href="{{url}}" target="_blank">{{url}}</a></span> -->
-      <span class="text"><a href="{{escapeUrl.url}}" target="_blank">{{escapeUrl.title}}</a></span><br>
+      <span class="text">{{escapeUrl.title}}</span><br>
+      <span class="text"><img src="{{escapeUrl.images.[0].url}}"/></span><br>
       <span class="text">{{escapeUrl.description}}</span>
-      <span class="text"><img src="{{escapeUrl.images.[1].url}}"/></span>
+      </a>
     </div>   
       {{#if isOwner}}
         <button class="delete">Remove</button>

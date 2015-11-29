@@ -11,18 +11,15 @@
         </button>
           {{/if}}
     <div class="bookmark">
-    <a href="{{escapeUrl.url}}" target="_blank">        
-      <!-- <span class="text">{{escapeUrl.title}}</span><br> -->
-      <!-- <span class="text"><a href="{{url}}" target="_blank">{{url}}</a></span> -->
-      <span class="text">{{escapeUrl.title}}</span><br>
-      <span class="text"><img src="{{escapeUrl.images.[0].url}}" class="bookmark-image"/></span><br>
-      <span class="text">{{escapeUrl.description}}</span>
-      </a>
+    <blockquote class="embedly-card" data-card-key="a8c07c5c43cc4e8dbb6b3634c8c474f8"><h4><a href="{{escapeUrl.url}}">{{escapeUrl.title}}</a></h4><p>{{escapeUrl.description}}</p></blockquote>
+<script async src="//cdn.embedly.com/widgets/platform.js" charset="UTF-8"></script>
     </div>   
       <div class="remove-button">
         {{#if isOwner}}
-          <br><button class="delete">Remove</button>
+          <button class="delete">Remove</button>
         {{/if}}
       </div>
   </li>
 </template>
+
+

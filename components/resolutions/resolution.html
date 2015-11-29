@@ -13,7 +13,9 @@
     <div class="bookmark">        
       <!-- <span class="text">{{escapeUrl.title}}</span><br> -->
       <!-- <span class="text"><a href="{{url}}" target="_blank">{{url}}</a></span> -->
-      <span class="text"><a href="{{escapeUrl.url}}" target="_blank">{{escapeUrl.title}}</a></span>
+      <span class="text"><a href="{{escapeUrl.url}}" target="_blank">{{escapeUrl.title}}</a></span><br>
+      <span class="text">{{escapeUrl.description}}</span>
+      <span class="text"><img src="{{escapeUrl.images.[1].url}}"/></span>
     </div>   
       {{#if isOwner}}
         <button class="delete">Remove</button>

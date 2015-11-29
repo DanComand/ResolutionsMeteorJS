@@ -22,6 +22,7 @@ if (Meteor.isClient) {
       var title = event.target.title.value;
       var url = event.target.url.value;
       var escapeUrl = Embedly.extract(url);
+      
       // var embedUrl = Embedly.extract(escapeUrl);
 
       Meteor.call("addResolution", title, url, escapeUrl);

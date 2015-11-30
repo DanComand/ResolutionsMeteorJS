@@ -8,7 +8,7 @@ if (Meteor.isClient) {
       if (Session.get('hideFinished')) {
         return Resolutions.find({checked: {$ne: true}});
       } else {
-        return Resolutions.find();
+        return Resolutions.find().fetch().reverse();
       }
     },
     hideFinished: function() {

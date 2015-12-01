@@ -1,4 +1,5 @@
 Resolutions = new Mongo.Collection('resolutions');
+Comments = new Mongo.Collection('comments');  
 
 if (Meteor.isClient) {
   Meteor.subscribe('resolutions');
@@ -11,6 +12,11 @@ if (Meteor.isClient) {
         return Resolutions.find().fetch().reverse();
       }
     },
+
+    comments: function() {
+      return Comments.find();
+    },
+
     hideFinished: function() {
       return Session.get('hideFinished');
     }
@@ -29,6 +35,15 @@ if (Meteor.isClient) {
 
       event.target.title.value = "";
       event.target.url.value = "";
+
+      return false;
+    },
+
+    'submit .new-comment': function(event) {
+      var text = event.target.text.value;
+
+      Meteor.call("addComment", text);
+      event.target.title.value = "";
 
       return false;
     },
@@ -56,6 +71,10 @@ if (Meteor.isServer) {
       ]
     });
   });
+
+  Meteor.publish('comments', function() {  
+    return Comments.find();
+});
 }
 
 
@@ -69,6 +88,13 @@ Meteor.methods({
     owner: Meteor.userId()
     });
   },
+
+  addComment: function(text) {
+    Comments.insert({
+      text : text,
+    });
+  },
+
   updateResolution: function(id, checked) {
     var res = Resolutions.findOne(id);
 

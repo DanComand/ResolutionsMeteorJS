@@ -14,8 +14,8 @@ if (Meteor.isClient) {
       }
     },
 
-    comments: function() {
-      return Comments.find();
+    comments: function(resolutionId) {
+      return Comments.find({resolutionId: resolutionId});
     },
 
     hideFinished: function() {
@@ -43,7 +43,7 @@ if (Meteor.isClient) {
     'submit .new-comment': function(event) {
       var comment = event.target.comment.value;
 
-      Meteor.call("addComment", comment);
+      Meteor.call("addComment", comment, resolutionId);
       event.target.comment.value = "";
 
       return false;
@@ -73,8 +73,8 @@ if (Meteor.isServer) {
     });
   });
 
-  Meteor.publish("comments", function() {  
-    return Comments.find();
+  Meteor.publish("comments", function(resolutionId) {  
+    return Comments.find({resolutionId: resolutionId});
 });
 }
 
@@ -86,13 +86,15 @@ Meteor.methods({
     url : url,
     escapeUrl : escapeUrl,
     createdAt : new Date(),
-    owner: Meteor.userId()
+    owner: Meteor.userId(),
+    username: Meteor.user().username
     });
   },
 
-  addComment: function(comment) {
+  addComment: function(comment, resolutionId) {
     Comments.insert({
       comment : comment,
+      resolutionId: resolutionId
     });
   },
 

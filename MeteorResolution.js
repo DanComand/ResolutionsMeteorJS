@@ -3,6 +3,7 @@ Comments = new Mongo.Collection('comments');
 
 if (Meteor.isClient) {
   Meteor.subscribe('resolutions');
+  Meteor.subscribe('comments');
 
   Template.body.helpers({
     resolutions: function() {

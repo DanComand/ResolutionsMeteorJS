@@ -40,10 +40,10 @@ if (Meteor.isClient) {
     },
 
     'submit .new-comment': function(event) {
-      var text = event.target.text.value;
+      var comment = event.target.comment.value;
 
-      Meteor.call("addComment", text);
-      event.target.title.value = "";
+      Meteor.call("addComment", comment);
+      event.target.comment.value = "";
 
       return false;
     },
@@ -72,7 +72,7 @@ if (Meteor.isServer) {
     });
   });
 
-  Meteor.publish('comments', function() {  
+  Meteor.publish("comments", function() {  
     return Comments.find();
 });
 }
@@ -89,9 +89,9 @@ Meteor.methods({
     });
   },
 
-  addComment: function(text) {
+  addComment: function(comment) {
     Comments.insert({
-      text : text,
+      comment : comment,
     });
   },
 

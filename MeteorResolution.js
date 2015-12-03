@@ -15,7 +15,7 @@ if (Meteor.isClient) {
     },
 
     comments: function(resolutionId) {
-      return Comments.find({resolutionId: resolutionId});
+      return Comments.find({resolutionId: this._id});
     },
 
     hideFinished: function() {
@@ -28,14 +28,16 @@ if (Meteor.isClient) {
     'submit .new-resolution': function(event) {
       var title = event.target.title.value;
       var url = event.target.url.value;
+      var firstComment = event.target.firstComment.value;
       var escapeUrl = Embedly.extract(url);
       
       // var embedUrl = Embedly.extract(escapeUrl);
 
-      Meteor.call("addResolution", title, url, escapeUrl);
+      Meteor.call("addResolution", title, url, escapeUrl, firstComment);
 
       event.target.title.value = "";
       event.target.url.value = "";
+      event.target.firstComment.value = "";
 
       return false;
     },
@@ -82,24 +84,24 @@ if (Meteor.isServer) {
 
 
 Meteor.methods({
-  addResolution: function(title, url, escapeUrl) {
+  addResolution: function(title, url, escapeUrl, firstComment) {
     Resolutions.insert({
     title : title,
     url : url,
     escapeUrl : escapeUrl,
+    firstComment : firstComment,
     createdAt : new Date(),
     owner: Meteor.userId(),
     username: Meteor.user().username
     });
   },
 
-  addComment: function(comment, resolutionId) {
+  addComment: function(comment) {
     Comments.insert({
       comment : comment,
       createdAt : new Date(),
       owner: this.userId,
-      username: Meteor.user().username,
-      resolutionId: this.resolutionId
+      username: Meteor.user().username
     });
   },
 

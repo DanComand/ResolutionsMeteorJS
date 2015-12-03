@@ -29,7 +29,6 @@ if (Meteor.isClient) {
       var title = event.target.title.value;
       var url = event.target.url.value;
       var escapeUrl = Embedly.extract(url);
-
       
       // var embedUrl = Embedly.extract(escapeUrl);
 
@@ -42,9 +41,11 @@ if (Meteor.isClient) {
     },
 
     'submit .new-comment': function(event) {
+      // event.preventDefault();
       var comment = event.target.comment.value;
+      var resolutionId = this._id;
 
-      Meteor.call("addComment", comment, this._id);
+      Meteor.call("addComment", comment);
       event.target.comment.value = "";
 
       return false;
@@ -96,9 +97,9 @@ Meteor.methods({
     Comments.insert({
       comment : comment,
       createdAt : new Date(),
-      owner: this.UserId,
+      owner: this.userId,
       username: Meteor.user().username,
-      resolutionId: resolutionId
+      resolutionId: this.resolutionId
     });
   },
 

@@ -11,19 +11,20 @@
   <div class="container">
     <header>
       <h1><i>Sauce!</i></h1>
-      <div class="login-buttons">
-        Logged in as: {{> loginButtons}}
-      <div class="hide-finished">
-        <input type="checkbox" checked="{{hideFinished}}">
-        Hide Seen Links
-      </div> 
-      </div>
+        <div class="login-buttons">
+          Logged in as: {{> loginButtons}}
+        </div>
+        <br>
+        <div class="hide-finished">
+          <input type="checkbox" checked="{{hideFinished}}">
+          Hide Seen Links
+        </div>
     </header>
-    <div class="top-content"> 
+    <div class="bookmark-form"> 
       {{#if currentUser}}
         <form class="new-resolution">
           <input type="text" name="url" placeholder="Link To Bookmark" required><br>
-          <input type="text" name="firstComment" placeholder="Add A Comment"><br>
+          <!-- <input type="text" name="firstComment" placeholder="Add A Comment"><br> -->
           <input type="submit" value="Submit">
         </form>
       {{/if}}

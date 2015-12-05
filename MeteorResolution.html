@@ -10,34 +10,35 @@
   
   <div class="container">
     <header>
-      <h1>Sauce - Now even <i>saucier!</i></h1>
-      
+      <h1><i>Sauce!</i></h1>
+      <div class="login-buttons">Logged in as: {{> loginButtons}}</div>
+    </header>
+    <div class="top-content">
       <label class="hide-finished">
         <input type="checkbox" checked="{{hideFinished}}">
         Hide Seen Links
       </label>  
-      <div class="login-buttons">{{> loginButtons}}</div>
       {{#if currentUser}}
         <form class="new-resolution">
           <input type="text" name="url" placeholder="Link To Bookmark" required><br>
-          <input type="text" name="firstComment" placeholder="Add A Comment" required><br>
+          <input type="text" name="firstComment" placeholder="Add A Comment"><br>
           <input type="submit" value="Submit">
         </form>
       {{/if}}
-    </header>
+    </div>
     <div class="bookmark-container">
       <ul>
         {{#each resolutions}}
           {{> resolution}}
         {{/each}}  
       </ul>
-      <div class="comments-container">
+<!--       <div class="comments-container">
       <ul>
         {{#each comments}}
           {{> comment}}
         {{/each}}
       </ul>
-      </div>
+      </div> -->
     </div>
 
   </div>

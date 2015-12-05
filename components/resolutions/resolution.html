@@ -11,11 +11,11 @@
         </button>
           {{/if}}
     <div class="bookmark">
-    <blockquote class="embedly-card" data-card-key="a8c07c5c43cc4e8dbb6b3634c8c474f8"><h4><a href="{{escapeUrl.url}}">{{escapeUrl.title}}</a></h4><p>{{escapeUrl.description}}</p></blockquote>
+    <blockquote class="embedly-card" data-card-key="a8c07c5c43cc4e8dbb6b3634c8c474f8" data-card-controls="0"><h4><a href="{{escapeUrl.url}}">{{escapeUrl.title}}</a></h4><p>{{escapeUrl.description}}</p></blockquote>
    <script async src="//cdn.embedly.com/widgets/platform.js" charset="UTF-8"></script>
    <div class="comment">
       <div>{{firstComment}}</div>
-      <div>by: {{username}}</div>
+      <div>From: {{username}}</div>
    </div>
 <!--     <form class="new-comment">
       <input type="text" name="comment" placeholder="Comments" required><br>
@@ -29,5 +29,6 @@
     </div>
   </li>
 </template>
+
 
 

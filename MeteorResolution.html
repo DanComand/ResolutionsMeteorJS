@@ -11,13 +11,15 @@
   <div class="container">
     <header>
       <h1><i>Sauce!</i></h1>
-      <div class="login-buttons">Logged in as: {{> loginButtons}}</div>
-    </header>
-    <div class="top-content">
-      <label class="hide-finished">
+      <div class="login-buttons">
+        Logged in as: {{> loginButtons}}
+      <div class="hide-finished">
         <input type="checkbox" checked="{{hideFinished}}">
         Hide Seen Links
-      </label>  
+      </div> 
+      </div>
+    </header>
+    <div class="top-content"> 
       {{#if currentUser}}
         <form class="new-resolution">
           <input type="text" name="url" placeholder="Link To Bookmark" required><br>

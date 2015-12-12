@@ -30,6 +30,7 @@ if (Meteor.isClient) {
       var url = event.target.url.value;
       var firstComment = event.target.firstComment.value;
       var escapeUrl = Embedly.extract(url);
+   
       
       // var embedUrl = Embedly.extract(escapeUrl);
 

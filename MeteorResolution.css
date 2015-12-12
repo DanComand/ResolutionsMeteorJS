@@ -245,6 +245,11 @@ background-color: #E0E0E0;
   font-family: 'Roboto';
 }
 
+.bookmark-title {
+  text-align: left;
+  padding-left: 20px;
+}
+
 
 
 

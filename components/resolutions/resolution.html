@@ -11,27 +11,30 @@
         </button>
           {{/if}} -->
     <div class="bookmark">
-      <div class="remove-button">
-        {{#if isOwner}}
-          <button class="delete">Remove</button>
-        {{/if}}
-      </div>
+    <div class="posted-by">Sauced at {{createdAt}} by {{username}}</div>
+      {{escapeUrl.title}}
     <blockquote class="embedly-card" data-card-key="a8c07c5c43cc4e8dbb6b3634c8c474f8" data-card-controls="0"><h4><a href="{{escapeUrl.url}}"></a></h4>
     <p></p></blockquote>
+<!--     {{escapeUrl.description}} -->
    <script async src="//cdn.embedly.com/widgets/platform.js" charset="UTF-8"></script>
    <div class="comment">
    {{#if isOwner}}
     <input type="checkbox" checked="{{checked}}" class="toggle-checked">
         <span class="bookmark-seen">I've seen this</span>
+      <div class="remove-button">
+        {{#if isOwner}}
+          <button class="delete">Remove</button>
+        {{/if}}
+      </div>
 
 
-        <button class="toggle-private">
+<!--         <button class="toggle-private">
           {{#if private}}
             Private
           {{else}}  
             Public
           {{/if}}
-        </button>
+        </button> -->
           {{/if}}
       <div>From: {{username}}</div>
       <div>{{firstComment}}</div>
